@@ -1,4 +1,4 @@
-{% set version = "0.2.0" %}
+{% set version = "0.2.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ncmeta_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ncmeta/ncmeta_{{ version }}.tar.gz
-  sha256: b037e8747b98bc6c60c33561c0c14d2b7732c03f9fffa075e84f62b26c152be3
+  sha256: ed4c679a0a3c31cc61d88db87b53aef924782895c37772702491779a30497c27
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -46,16 +46,10 @@ test:
 about:
   home: https://github.com/hypertidy/ncmeta
   license: GPL-3
-  summary: Extract metadata from 'NetCDF' data sources, these can be files, file handles or servers.
-    This package leverages and extends the lower level functions of the 'RNetCDF' package
-    providing a consistent set of functions that all return data frames. We introduce
-    named concepts of 'grid', 'axis' and 'source' which are all meaningful entities
-    without formal definition in the 'NetCDF' library <https://www.unidata.ucar.edu/software/netcdf/>.
-    'RNetCDF' matches the library itself with only the named concepts of 'variables',
-    'dimensions' and 'attributes'. 'ncmeta' provides a required framework for the in-development
-    'tidync' project <https://github.com/hypertidy/tidync>.
+  summary: Extract metadata from 'NetCDF' data sources, these can be files, file handles or servers. This package leverages and extends the lower level functions of the 'RNetCDF' package providing a consistent set of functions that all return data frames. We introduce named concepts of 'grid', 'axis' and 'source' which are
+    all meaningful entities without formal definition in the 'NetCDF' library <https://www.unidata.ucar.edu/software/netcdf/>. 'RNetCDF' matches the library itself with only the named concepts of 'variables', 'dimensions' and 'attributes'. 'ncmeta' provides a required framework for the in-development 'tidync' project <https://github.com/hypertidy/tidync>.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
