@@ -1,4 +1,4 @@
-{% set version = "0.3.6" %}
+{% set version = "0.4.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ncmeta_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ncmeta/ncmeta_{{ version }}.tar.gz
-  sha256: 82d580d2045967f19356dcd0e7869a738a5c2f7cb19bd4df0ab6b80a81e5655e
+  sha256: 1c081033d472f63fb8b106d05f0f5241b0163605e4983bf7d330a8ef87ee55a9
 
 build:
   merge_build_host: true  # [win]
