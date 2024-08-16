@@ -1,6 +1,5 @@
 {% set version = "0.4.0" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-ncmeta
@@ -13,7 +12,6 @@ source:
   sha256: 1c081033d472f63fb8b106d05f0f5241b0163605e4983bf7d330a8ef87ee55a9
 
 build:
-  merge_build_host: true  # [win]
   number: 0
   noarch: generic
   rpaths:
@@ -25,6 +23,7 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-cftime
     - r-rnetcdf
     - r-dplyr
     - r-rlang
@@ -32,6 +31,7 @@ requirements:
     - r-tidyr
   run:
     - r-base
+    - r-cftime
     - r-rnetcdf
     - r-dplyr
     - r-rlang
@@ -49,7 +49,8 @@ about:
   summary: Extract metadata from 'NetCDF' data sources, these can be files, file handles or servers. This package leverages and extends the lower level functions of the 'RNetCDF' package providing a consistent set of functions that all return data frames. We introduce named concepts of 'grid', 'axis' and 'source' which are
     all meaningful entities without formal definition in the 'NetCDF' library <https://www.unidata.ucar.edu/software/netcdf/>. 'RNetCDF' matches the library itself with only the named concepts of 'variables', 'dimensions' and 'attributes'. 'ncmeta' provides a required framework for the in-development 'tidync' project <https://github.com/hypertidy/tidync>.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
